@@ -51,7 +51,7 @@
         document.body.appendChild(renderer.domElement);
 
 
-        new THREE.GLTFLoader().load('model/scene.gltf', result => {
+        new THREE.GLTFLoader().load('model/milk.gltf', result => {
           model = result.scene.children[0];
           model.position.set(0,0,0);
           model.traverse(n => { if ( n.isMesh ) {
