@@ -16,7 +16,7 @@
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0xdddddd);
        scene.background = new THREE.CubeTextureLoader()
-          .setPath( 'skybox/' )
+          .setPath( 'skybox/')
           .load( [
             'px.jpg',
             'nx.jpg',
@@ -50,6 +50,17 @@
         renderer.shadowMap.enabled = true;
         document.body.appendChild(renderer.domElement);
 
+        new THREE.GLTFLoader().load('model/rainbowcow.gltf', result => {
+          cow = result.scene.children[0];
+          cow.position.set(0,0,0);
+          cow.traverse(n => { if ( n.isMesh ) {
+            n.castShadow = true;
+            n.receiveShadow = true;
+            if(n.material.map) n.material.map.anisotropy = 1;
+          }});
+          scene.add(cow);
+          animate();
+        });
 
         new THREE.GLTFLoader().load('model/milk.gltf', result => {
           model = result.scene.children[0];
@@ -60,7 +71,6 @@
             if(n.material.map) n.material.map.anisotropy = 1;
           }});
           scene.add(model);
-
           animate();
         });
       }
@@ -73,7 +83,14 @@
         );
         requestAnimationFrame(animate);
       }
+      function spin() {
+        requestAnimationFrame(spin);
+        model.rotation.y += 0.05;
+      }
+
       init();
+      spin();
+
 
     </script>
   </body>
