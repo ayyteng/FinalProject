@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-image: url("giphy.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+canvas {
+  display: block;
+}
+p{
+  top: 0;
+  margin-top: 0;
+  margin-bottom: 200px;
+  display: grid;
+  grid-template-columns: repeat(60, 15px);
+  grid-auto-rows: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+#firefire{
+    margin: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+#background {
+  margin: 0;
+  z-index: -1;
+  min-height: 100%;
+  min-width: 100%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
+img {margin: 0;}

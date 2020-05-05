@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Video Pixel Processing: SVG</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <div>
+    <img id="firefire" src="firebackground.jpg"></img>
+    <video id="background" src="cowcloseup.mp4" type="video/mp4" autoplay muted loop>
+      </video>
+    </div>
+
+
+
+    <svg>
+      <use href="fire.svg">
+    </svg>
+    <div style="display: none">
+      <video muted autoplay loop playsinline src="cowcloseup.mp4"></video>
+    <canvas width="600" height="400"></canvas>
+    </div>
+
+
+   <p></p>
+
+
+    <script>
+      const canvas = document.querySelector('canvas');
+      const context = canvas.getContext('2d', {alpha: false});
+
+      let width;
+      let height;
+
+
+      let pxScale = window.devicePixelRatio;
+
+      const video = document.querySelector('video');
+
+      const formGrid = document.querySelector('p');
+
+      for (let i = 0; i < (60 * 40); i++) {
+       let element = document.createElement('img');
+       element.src = "fire.svg";
+       formGrid.appendChild(element);
+     }
+
+     let fires = document.querySelectorAll('img');
+
+      function setup() {
+
+        video.play();
+
+        width = canvas.width;
+        height = canvas.height;
+
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+
+        canvas.width = width * pxScale;
+        canvas.height = height * pxScale;
+
+        context.scale(pxScale, pxScale);
+      }
+
+      let imgScale = 10;
+
+      function draw() {
+        // draw video image, scaled down by a factor of imgScale * pxScale
+        context.drawImage(video, 0, 0, 600 / (imgScale * pxScale), 400 / (imgScale * pxScale));
+
+        // access video image data
+        let imageData = context.getImageData(0, 0, width / imgScale, height / imgScale);
+        let data = imageData.data;
+
+        // clear original video
+        context.clearRect(0, 0, width, height);
+
+        // iterate over every row and column of video image
+        for (let y = 0; y < imageData.height; y++) {
+          for (let x = 0; x < imageData.width; x++) {
+            let index = (x + y * imageData.width) * 4; // index position of every pixel
+
+            let r = data[index + 0]; // red
+            let g = data[index + 1]; // green
+            let b = data[index + 2]; // blue
+            let a = data[index + 3]; // alpha
+
+            let gridIndex = index / 4;
+
+            if ((r + g + b) / 3 < 120) {
+              fires[gridIndex].style.opacity = '1';
+            } else {
+              fires[gridIndex].style.opacity = '0';
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('load', () => {
+        setup();
+        draw();
+      });
+
+
+    </script>
+  </body>
+</html>
