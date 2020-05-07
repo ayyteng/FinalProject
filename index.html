@@ -5,97 +5,160 @@
     <style>
       @import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
 
+
+      a{
+        text-decoration: none;
+      }
+
       body {
         top: 0;
-        postion: right;
         margin: 0;
         padding: 0;
         height: 100vh;
         max-width: 80%;
         display: flex;
-        background-image: url("cowface2.jpg");
+        background-color: #EBDDCB;
         background-size: cover;
+        background-repeat: no-repeat;
         opacity: 1;
 
       }
 
 
       #words {
-        margin: 10px;
+        left: 45vw;
+        position: fixed;
+        text-align: center;
         font-family: 'Fredoka One', cursive;
         font-size: 6vw;
         font-style: bold;
         letter-spacing: 2px;
+        color: white;
+        text-shadow: 3px 3px black;
+      }
+      #smaller {
+        position: fixed;
+        left: 43vw;
+        top: 10vh;
+        text-align: center;
+        font-family: 'Fredoka One', cursive;
+        font-size: 3vw;
+        font-style: bold;
+        letter-spacing: 2px;
+        color: white;
+        text-shadow: 3px 3px black;
+      }
+
+
+      #new{
         animation-duration: 5s;
         animation-timing-function: linear;
         animation-fill-mode: forwards;
-        opacity: 1;
       }
-      .got {
-        position: absolute;
-        top: 14%;
-        left: 35%;
-        color: white;
-        text-shadow: 1px 1px black,
-                     2px 2px black,
-                     3px 3px black;
+
+
+      #milk {
+        margin: 5px;
+        position: fixed;
+        height: 30%;
+        width: 30%;
+        top: 30%;
+        left: 5%;
       }
-      .got:hover {
-        position: absolute;
-        top: 13%;
-        left: 34%;
-        text-shadow: 1px 1px black,
-                     2px 2px black,
-                     3px 3px black,
-                     4px 4px black,
-                     5px 5px black,
-                     6px 6px black;
+      #cow {
+        margin: 5px;
+        position: fixed;
+        height: 40%;
+        width: 40%;
+        top: 25%;
+        left: 30%;
+
       }
-      .milk {
-        position: absolute;
-        top: 14%;
-        right: 36%;
-        color: white;
-        text-shadow: 1px 1px black,
-                     2px 2px black,
-                     3px 3px black;
+      #angry {
+        margin: 5px;
+        position: fixed;
+        height: 20%;
+        width: 20%;
+        top: 35%;
+        left: 70%;
       }
-      .milk:hover {
-        position: absolute;
-        top: 13%;
-        right: 36%;
-        text-shadow: 1px 1px black,
-                     2px 2px black,
-                     3px 3px black,
-                     4px 4px black,
-                     5px 5px black,
-                     6px 6px black;
+      #milk2 {
+        z-index: -1;
+        margin: 5px;
+        position: fixed;
+        height: 30%;
+        width: 30%;
+        top: 30%;
+        left: 5%;
+        opacity: 0.4;
       }
-      .click {
-        position: absolute;
-        top: 14%;
-        right: 25%;
-        color: white;
-        text-shadow: 1px 1px black,
-                     2px 2px black,
-                     3px 3px black;
+      #cow2 {
+        z-index: -1;
+        margin: 5px;
+        position: fixed;
+        height: 40%;
+        width: 40%;
+        top: 25%;
+        left: 30%;
+        opacity: 0.4;
       }
-      .click:hover {
-        position: absolute;
-        top: 13%;
-        right: 24%;
-        text-shadow: 1px 1px black,
-                     2px 2px black,
-                     3px 3px black,
-                     4px 4px black,
-                     5px 5px black,
-                     6px 6px black;
+      #angry2 {
+        z-index: -1;
+        margin: 5px;
+        position: fixed;
+        height: 20%;
+        width: 20%;
+        top: 35%;
+        left: 70%;
+        opacity: 0.4;
+      }
+
+      #milk:hover{
+        top: 29%;
+        left: 4%;
+      }
+      #cow:hover{
+        top: 23%;
+        left: 30%;
+      }
+      #angry:hover{
+        top: 34%;
+        left: 71%;
+      }
+
+
+
+
+
 
     </style>
   </head>
-  <div id="words">
-    <a href="webGLMilk/index.html" class="got"> got </a>
-    <a href="JavascriptMilk/index.html" class="milk"> milk </a>
-    <a href="HTMLCanvasMilk/index.html" class="click"> ?? </a>
-  </div>
+
+    <svg>
+      <use href="milk.svg">
+      <use href="cow.svg">
+      <use href="mad.svg">
+    </svg>
+
+    <h1 id="words">
+      Milk
+    </h1>
+    <h5 id="smaller">
+      Alex Teng
+    </h5>
+
+
+    <div id="new">
+      <a href="webGLMilk/index.html">
+      <img id="milk" src="milk.svg"></a>
+      <img id="milk2" src="milk.svg">
+      <a href="JavascriptMilk/index.html">
+      <img id="cow" src="cow.svg"></a>
+      <img id="cow2" src="cow.svg">
+      <a href="HTMLCanvasMilk/index.html">
+      <img id="angry" src="mad.svg"></a>
+      <img id="angry2" src="mad.svg">
+    </div>
+
+
 </html>
